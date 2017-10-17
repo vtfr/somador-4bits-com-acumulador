@@ -13,8 +13,7 @@ test: test.c
 
 # Limpa os arquivos residuais
 clean:
-	rm 4bit-adder-acc-genpat.pat \
-		4bit-adder-acc-genpat.gpt
+	rm 4bit-adder-acc-genpat.pat
 
 # Compila o genpat e escreve seu arquivo
 genpat: genpat.c
