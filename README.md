@@ -17,3 +17,8 @@ Uma vez no diretório raiz desse projeto, com a suite Alliance instalada
 em sistemas baseados no Debian, execute o seguinte comando:
 
     $ make genpat
+
+Também é possível gerar uma tabela de resultados humanamente legíveis usando
+o comando
+
+	$ make test
