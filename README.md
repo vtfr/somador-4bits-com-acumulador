@@ -1,17 +1,16 @@
-# Somador 4 Bits com Acumulador
+# Concepção Estruturada de Circuitos Integrados: Somador/Subtrator de 4 Bits com Acumulador
 Esse projeto foi criado para a disciplina de Concepção Estruturada de Circuitos
-Integrados, ministrada pelo Prof. Antonio Carlos Cavalcanti, no período 2017.1, UFPB.
+Integrados, ministrada pelo Prof. Antonio Carlos Cavalcanti, no período 2017.1, UFPB,
+com o objetivo de gerar um modelo de referência para um circuito capaz de somar,
+subtrair, armazenar e inverter uma determinada entrada de 4 Bits, seguindo esse comportamento:
 
-O Somador de 4 bits com Acumulador consiste em um Somador/Subtrator que
-é capaz de realizar quatro operações: armazenar um valor no acumulador,
-armazenar um valor invertido no acumulador, realizar uma soma de um valor
-com o valor atual do acumulador e realizar uma subtração de um valor com o
-valor atual do acumulador, chaveadas através de duas entradas seletoras de
-modo.
 
-Uma vez o código em C mãos, através da ferramenta Genpat (pacote Alliance), é
-possível gerar uma suite de testes para qualquer circuito que implemente essa
-funcionalidade, servindo de *Modelo de Ouro*.
+| sel0 | sel1 | Resposta                         | Operação       |
+|------|------|----------------------------------|----------------|
+| 0    | 0    | Copia A para ACC                 | ACC <= A       |
+| 0    | 1    | Soma A com ACC e grava em ACC    | ACC <= ACC + A |
+| 1    | 0    | Copia Inv(A) para ACC            | ACC <= Inv(A)  |
+| 1    | 1    | Subtrai A de ACC e grava em ACC  | ACC <= ACC - A |
 
 ## Compilação da Suite de Testes
 Uma vez no diretório raiz desse projeto, com a suite Alliance instalada
@@ -19,7 +18,5 @@ em um sistema baseado no Debian, execute o seguinte comando:
 
     $ make genpat
 
-Também é possível gerar uma tabela de resultados humanamente legíveis usando
-o comando:
-
-	$ make test
+## Relatório
+O Relatório pode ser acessado no arquivo [`Relatorio.md`](Relatorio.md).

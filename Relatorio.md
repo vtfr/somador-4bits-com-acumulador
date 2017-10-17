@@ -1,4 +1,5 @@
 # Concepção Estruturada de Circuitos Integrados: Somador/Subtrator de 4 Bits com Acumulador
+Aluno Victor Franco Vieira Lima, 2017.
 
 ## Modelo de Referência de Ouro
 
