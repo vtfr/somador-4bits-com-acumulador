@@ -44,7 +44,6 @@ Resultado4Bits Somador4Bits(uint8_t a, uint8_t b, uint8_t cin) {
 }
 
 void PrintResultado4Bits(Resultado4Bits resultado) {
-
 	printf("Resultado4Bits { saida: 0x%02x, cout: %d }\n",
 		resultado.saida,
 		resultado.cout);

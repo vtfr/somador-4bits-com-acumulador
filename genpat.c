@@ -24,8 +24,8 @@ void GerarGenpat() {
 	DECLAR("vdd", ":2", "B", IN, "", "");
 	DECLAR("vss", ":2", "B", IN, "", "");
 
-	AFFECT ("0", "vdd", "1");
-	AFFECT ("0", "vss", "0");
+	AFFECT("0", "vdd", "1");
+	AFFECT()"0", "vss", "0");
 
 	/* Começa a iterar as entradas */
 	int current = 0;
