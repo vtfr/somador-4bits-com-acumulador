@@ -1,7 +1,6 @@
 #ifndef SOMADOR_4BITS_H
 #define SOMADOR_4BITS_H
 
-#include <stdint.h>
 #include <somador_1bit.h>
 
 /*

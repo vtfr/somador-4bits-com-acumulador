@@ -1,14 +1,13 @@
 #ifndef MUX_4BITS_H
 #define MUX_4BITS_H
 
-#include <util.h>
-
 /*
- * Realiza uma operação de 4 bits usando um valorAnterior e um novo valor,
- * usando o código e clock atual e anterior
+ * Mux de 4 bits
+ * c == 0 => return a
+ * c == 1 => return b
  */
 int Mux4Bits(uint8_t c, uint8_t a, uint8_t b) {
-	
+	return (c & 0x1) == 0 ? (a & 0xF) : (b & 0xF);
 }
 
 #endif // MUX_4BITS_H

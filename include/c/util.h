@@ -6,13 +6,6 @@
 #include <stdio.h>
 
 /*
- * Inverte um valor
- */
-uint8_t Inversor(uint8_t valor) {
-	return ~valor & 0xF;
-}
-
-/*
  * Aloca memória que só será liberada no final da execução
  * TODO: manter um vetor com os ponteiros alocados para desalocá-los no final
  * do programa seria o correto, porém como a duração desse programa é ínfima

@@ -7,8 +7,7 @@ GENPAT_FILES=$(wildcard src/c/*.c)
 GENPAT_BINARIES=$(notdir $(basename $(GENPAT_FILES)))
 
 # Todos os arquivo VHDL
-VHDL_FILES=$(wildcard src/vhdl/*.vhdl)
-VHDL_FILES_BASENAME=$(basename $(VHDL_FILES))
+VHDL_FILES=$(notdir $(basename $(wildcard src/vhdl/*.vhdl)))
 
 # Compila os genpats
 pat: clean $(GENPAT_BINARIES)
@@ -16,11 +15,6 @@ pat: clean $(GENPAT_BINARIES)
 # Limpa os arquivos residuais
 clean:
 	rm -f test/* work/*
-
-test: $(VHDL_FILES_BASENAME)
-
-$(VHDL_FILES_BASENAME):
-
 
 # Entra no diretório 'test', compila os arquivos genpat e escreve seus
 # arquivos

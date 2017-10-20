@@ -1,8 +1,10 @@
 #ifndef SOMADOR_4BITS_ACC_H
 #define SOMADOR_4BITS_ACC_H
 
-#include <util.h>
 #include <somador_4bits.h>
+#include <mux_4bits.h>
+#include <inv_4bits.h>
+#include <acc_4bits.h>
 
 /*
  * Realiza uma operação de 4 bits usando um valorAnterior e um novo valor,
@@ -18,18 +20,16 @@ Resultado4Bits Somador4BitsAcc(uint8_t codigo, uint8_t* valorAcc,
 	const int sel1 = (codigo >> 1) & 0x1;
 
 	/* Caso o sel0 seja 1, inverte a entrada (MUX0) */
-	const uint8_t resultadoMux0 = sel0 ? Inversor(valor) : valor;
+	const uint8_t resultadoMux0 = Mux4Bits(sel0, valor, Inv4Bits(valor));
 
 	/* Realiza a soma do valor com o valor acumulado */
 	const Resultado4Bits somador = Somador4Bits(*valorAcc, resultadoMux0, sel0);
 
-	const uint8_t resultadoMux1 = sel1 ? somador.saida : resultadoMux0;
+	const uint8_t resultadoMux1 = Mux4Bits(sel1, resultadoMux0, somador.saida);
 
 	/* Caso o clock seja de subida e seja diferente do anterior, atualiza
 	   o valor do acumulador */
-	if (clk == 1 && clk != aclk) {
-		*valorAcc = resultadoMux1 ; /* MUX1 */
-	}
+	Acc4Bits(resultadoMux1, valorAcc, clk, aclk);
 
 	Resultado4Bits resultado;
 	resultado.saida = resultadoMux1;
