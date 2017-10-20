@@ -5,7 +5,39 @@
 
 static int current = 0;
 
+/*
+ * Como o estado inicial do acc e o estagio intermediario
+ * entre testes eh desconhecido, essa funcao limpa o estado
+ * interno dos registradores do circuito na simulacao, como feito
+ * pelo codigo abaixo
+ */
+void ResetarEstadoCircuito() {
+	AFFECT(IntToStr(current), "Clk",  "0");
+	AFFECT(IntToStr(current), "Sel0", "0");
+	AFFECT(IntToStr(current), "Sel1", "0");
+	AFFECT(IntToStr(current), "A",    "0b0000");
+	AFFECT(IntToStr(current), "S",    "0b****");
+	AFFECT(IntToStr(current), "Cout", "0b*");
+	LABEL("State_Reset");
+	current++;
+
+	AFFECT(IntToStr(current), "Clk",  "1");
+	AFFECT(IntToStr(current), "Sel0", "0");
+	AFFECT(IntToStr(current), "Sel1", "0");
+	AFFECT(IntToStr(current), "A",    "0b0000");
+	AFFECT(IntToStr(current), "S",    "0b0000");
+	AFFECT(IntToStr(current), "Cout", "0b0");
+	current++;
+}
+
+
+/*
+ * Gera uma simulacao para um determinado codigo de
+ * operacao (sel0 e sel1)
+ */
 void GerarGenpatParaCodigo(char* label, int code) {
+	ResetarEstadoCircuito();
+
 	int labelUsado = 0;
 	
 	uint8_t acc = 0;
@@ -17,9 +49,9 @@ void GerarGenpatParaCodigo(char* label, int code) {
 		AFFECT(IntToStr(current), "Clk",  IntToStr(clk));
 		AFFECT(IntToStr(current), "Sel0", IntToStr((code >> 0) & 0x1));
 		AFFECT(IntToStr(current), "Sel1", IntToStr((code >> 1) & 0x1));
-		AFFECT(IntToStr(current), "Cout", IntToStr(res.cout));
-		AFFECT(IntToStr(current), "S",    IntToStr(res.saida));
 		AFFECT(IntToStr(current), "A",    IntToStr(a));
+		AFFECT(IntToStr(current), "S",    IntToStr(res.saida));
+		AFFECT(IntToStr(current), "Cout", IntToStr(res.cout));
 
 		if (!labelUsado) {
 			LABEL(label);
