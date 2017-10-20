@@ -7,14 +7,12 @@ static int current = 0;
 
 void GerarGenpatParaCodigo(char* label, int code) {
 	int labelUsado = 0;
-
+	
+	uint8_t acc = 0;
 	for (int a = 0; a < 16; a++)
-	for (int acc = 0; acc < 16; acc++)
-	for (int clk = 0; clk <= 1; clk++) {
-		uint8_t accCopia = acc;
-
+	for (int clk = 1; clk > 0; clk--) {
 		/* Calcula o resultado do somador de 4 bits com acumulador */
-		Resultado4Bits res = Somador4BitsAcc(code, &accCopia, a, clk, !clk);
+		Resultado4Bits res = Somador4BitsAcc(code, &acc, a, clk, !clk);
 
 		AFFECT(IntToStr(current), "Clk",  IntToStr(clk));
 		AFFECT(IntToStr(current), "Sel0", IntToStr((code >> 0) & 0x1));
@@ -22,7 +20,6 @@ void GerarGenpatParaCodigo(char* label, int code) {
 		AFFECT(IntToStr(current), "Cout", IntToStr(res.cout));
 		AFFECT(IntToStr(current), "S",    IntToStr(res.saida));
 		AFFECT(IntToStr(current), "A",    IntToStr(a));
-	 	AFFECT(IntToStr(current), "ACC",  IntToStr(accCopia));
 
 		if (!labelUsado) {
 			LABEL(label);
@@ -45,7 +42,6 @@ int main(void) {
 	// Saídas
 	DECLAR("S",    ":1", "B", OUT, "3 down to 0", "");
 	DECLAR("Cout", ":1", "B", OUT, "", "");
-	DECLAR("ACC",  ":1", "B", OUT, "3 down to 0", "");
 
 	// Misc
 	DECLAR("vdd", ":1", "B", IN, "", "");

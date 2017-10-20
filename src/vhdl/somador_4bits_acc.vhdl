@@ -64,6 +64,7 @@ architecture structural of somador_4bits_acc is
 
 	signal inv_a         : std_logic_vector(3 downto 0);
 	signal mux0_value    : std_logic_vector(3 downto 0);
+	signal mux1_value    : std_logic_vector(3 downto 0);
 	signal acc_value     : std_logic_vector(3 downto 0);
 	signal somador_value : std_logic_vector(3 downto 0);
 begin
@@ -97,15 +98,17 @@ begin
 		a    => mux0_value,
 		b    => somador_value,
 		ctrl => sel1,
-		s    => s,
+		s    => mux1_value,
 		vdd => vdd,
 		vss => vss);
 
 	acc: acc_4bits port map (
-		a   => s,
+		a   => mux1_value,
 		clk => clk,
 		s   => acc_value,
 		vdd => vdd,
 		vss => vss);
+
+	s <= mux1_value;	
 
 end structural;
