@@ -2,7 +2,7 @@
 #define SOMADOR_4BITS_H
 
 #include <stdint.h>
-#include "somador1Bit.h"
+#include <somador_1bit.h>
 
 /*
  * Define a estrutura do resultado do Somador de 4 Bits
@@ -41,12 +41,6 @@ Resultado4Bits Somador4Bits(uint8_t a, uint8_t b, uint8_t cin) {
 	resultado.s3 = soma3.saida;
 	resultado.s4 = soma4.saida;
 	return resultado;
-}
-
-void PrintResultado4Bits(Resultado4Bits resultado) {
-	printf("Resultado4Bits { saida: 0x%02x, cout: %d }\n",
-		resultado.saida,
-		resultado.cout);
 }
 
 #endif // SOMADOR_4BITS_H

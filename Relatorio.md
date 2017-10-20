@@ -18,7 +18,7 @@ a suite de testes.
 
 ## Diagrama do Somador/Subtrator de 4 Bits com Acumulador
 
-![Diagrama](https://raw.githubusercontent.com/vtfr/somador-4bits-com-acumulador/master/schematic.png)
+![Diagrama](schematic.png)
 
 O circuito possui uma entrada de 4 bits chamada A e duas entradas de 1 bit cada
 para os seletores de modo de operação, sel0 e sel1. O comportamento do circuito

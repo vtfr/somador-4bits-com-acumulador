@@ -1,8 +1,8 @@
 #ifndef SOMADOR_4BITS_ACC_H
 #define SOMADOR_4BITS_ACC_H
 
-#include "somador4Bits.h"
-#include "util.h"
+#include <util.h>
+#include <somador_4bits.h>
 
 /*
  * Realiza uma operação de 4 bits usando um valorAnterior e um novo valor,
