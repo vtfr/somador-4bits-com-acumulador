@@ -35,7 +35,9 @@ architecture structural of somador_4bits_acc is
 	port (
 		ctrl : in std_logic;
 		a, b : in  std_logic_vector(3 downto 0);
-		s    : out std_logic_vector(3 downto 0)
+		s    : out std_logic_vector(3 downto 0);
+		vdd  : in  std_logic;
+		vss  : in  std_logic
 	);
 	end component;
 
@@ -43,7 +45,9 @@ architecture structural of somador_4bits_acc is
 	component inv_4bits
 	port (
 		a : in  std_logic_vector(3 downto 0);
-		s : out std_logic_vector(3 downto 0)
+		s : out std_logic_vector(3 downto 0);
+		vdd  : in  std_logic;
+		vss  : in  std_logic
 	);
 	end component;
 
@@ -52,7 +56,9 @@ architecture structural of somador_4bits_acc is
 	port (
 		a   : in  std_logic_vector(3 downto 0);
 		s   : out std_logic_vector(3 downto 0);
-		clk : in std_logic
+		clk : in std_logic;
+		vdd  : in  std_logic;
+		vss  : in  std_logic
 	);
 	end component;
 
