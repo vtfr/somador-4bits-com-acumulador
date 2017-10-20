@@ -9,7 +9,7 @@ cd work/
 && vasy -a -o somador_1bit{,} \
 && vasy -a -o somador_4bits{,} \
 && vasy -a -o somador_4bits_acc{,}
-exit
+
 # Passa o asimut nos arquivos
    asimut -b inv_4bits{,} result \
 && asimut -b acc_4bits{,} result \
