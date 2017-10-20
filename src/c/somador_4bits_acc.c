@@ -42,7 +42,7 @@ void GerarGenpatParaCodigo(char* label, int code) {
 	
 	uint8_t acc = 0;
 	for (int a = 0; a < 16; a++)
-	for (int clk = 1; clk > 0; clk--) {
+	for (int clk = 0; clk <= 1; clk++) {
 		/* Calcula o resultado do somador de 4 bits com acumulador */
 		Resultado4Bits res = Somador4BitsAcc(code, &acc, a, clk, !clk);
 

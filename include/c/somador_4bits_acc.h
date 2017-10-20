@@ -23,7 +23,7 @@ Resultado4Bits Somador4BitsAcc(uint8_t codigo, uint8_t* valorAcc,
 	const uint8_t resultadoMux0 = Mux4Bits(sel0, valor, Inv4Bits(valor));
 
 	/* Realiza a soma do valor com o valor acumulado */
-	const Resultado4Bits somador = Somador4Bits(*valorAcc, resultadoMux0, sel0);
+	const Resultado4Bits somador = Somador4Bits(resultadoMux0, *valorAcc, sel0);
 
 	const uint8_t resultadoMux1 = Mux4Bits(sel1, resultadoMux0, somador.saida);
 
