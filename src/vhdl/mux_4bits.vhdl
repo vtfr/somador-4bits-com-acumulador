@@ -6,7 +6,9 @@ entity mux_4bits is
 	port (
 		ctrl : in std_logic;
 		a, b : in  std_logic_vector(3 downto 0);
-		s    : out std_logic_vector(3 downto 0)
+		s    : out std_logic_vector(3 downto 0);
+		vdd       : in  std_logic;
+		vss       : in  std_logic
 	);
 end mux_4bits;
 

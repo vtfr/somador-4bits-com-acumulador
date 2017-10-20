@@ -5,7 +5,9 @@ entity acc_4bits is
 	port(
 		clk : in  std_logic;
 		a   : in  std_logic_vector(3 downto 0);
-		s   : out std_logic_vector(3 downto 0)
+		s   : out std_logic_vector(3 downto 0);
+		vdd       : in  std_logic;
+		vss       : in  std_logic
 	);
 end acc_4bits;
 

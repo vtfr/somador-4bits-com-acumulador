@@ -5,7 +5,9 @@ use IEEE.STD_LOGIC_1164.all;
 entity inv_4bits is
 	port (
 		a : in  std_logic_vector(3 downto 0);
-		s : out std_logic_vector(3 downto 0)
+		s : out std_logic_vector(3 downto 0);
+		vdd       : in  std_logic;
+		vss       : in  std_logic
 	);
 end inv_4bits;
 

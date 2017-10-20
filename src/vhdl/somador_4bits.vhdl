@@ -26,8 +26,8 @@ architecture structural of somador_4bits is
 	end component;
 	signal c1, c2, c3: std_logic;
 begin
-	S0: somador_1bit port map (a(0), b(0), cin, s(0), c1);
-	S1: somador_1bit port map (a(1), b(1), c1,  s(1), c2);
-	S2: somador_1bit port map (a(2), b(2), c2,  s(2), c3);
-	S3: somador_1bit port map (a(3), b(3), c3,  s(3), cout);
+	S0: somador_1bit port map (a(0), b(0), cin, s(0), c1, vdd, vss);
+	S1: somador_1bit port map (a(1), b(1), c1,  s(1), c2, vdd, vss);
+	S2: somador_1bit port map (a(2), b(2), c2,  s(2), c3, vdd, vss);
+	S3: somador_1bit port map (a(3), b(3), c3,  s(3), cout, vdd, vss);
 end structural;

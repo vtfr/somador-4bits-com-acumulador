@@ -64,14 +64,18 @@ begin
 	-- Começa invertendo o A, dependendo do valor de sel0
 	inv0: inv_4bits port map (
 		a => a,
-		s => inv_a);
+		s => inv_a,
+		vdd => vdd,
+		vss => vss);
 
 	-- Liga ao mux0
 	mux0: mux_4bits port map (
 		a    => a,
 		b    => inv_a,
 		ctrl => sel0,
-		s    => mux0_value);
+		s    => mux0_value,
+		vdd => vdd,
+		vss => vss);
 
 	-- Liga ao somador
 	somador: somador_4bits port map (
@@ -79,17 +83,23 @@ begin
 		b    => acc_value,
 		cin  => sel0,
 		cout => cout,
-		s    => somador_value);
+		s    => somador_value,
+		vdd => vdd,
+		vss => vss);
 
 	mux1: mux_4bits port map (
 		a    => mux0_value,
 		b    => somador_value,
 		ctrl => sel1,
-		s    => s);
+		s    => s,
+		vdd => vdd,
+		vss => vss);
 
 	acc: acc_4bits port map (
 		a   => s,
 		clk => clk,
-		s   => acc_value);
+		s   => acc_value,
+		vdd => vdd,
+		vss => vss);
 
 end structural;
