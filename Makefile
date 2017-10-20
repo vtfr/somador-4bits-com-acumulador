@@ -15,7 +15,7 @@ all: test
 
 # Limpa os arquivos residuais
 clear:
-	rm -f test/* work/*
+	rm -f test/*.pat work/catalog work/*.{vbe,vhdl,vst,pat}
 
 # Test roda a suite de testes
 test: work

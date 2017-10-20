@@ -1,1 +1,4 @@
 *.~
+work/catalog
+work/*.{pat,vhdl,vbe,vst}
+test/*.pat
