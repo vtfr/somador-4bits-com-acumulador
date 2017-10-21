@@ -258,7 +258,7 @@ Esse processo é rodado para cada VHDL do projeto, preparando-os para a próxima
 
 ### Simulação do Circuito
 
-A simulação do circuito é feita pelo programa *Assimut*, do pacote Alliance. O funciomaneot do asismut é simples: dado um componente `vbe` ou `vst` e um vetor de testes `pat`, ele simula o circuito e retorna a corretude do circuito.
+A simulação do circuito é feita pelo programa *Assimut*, do pacote Alliance. O funciomaneot do assimut é simples: dado um componente `vbe` ou `vst` e um vetor de testes `pat`, ele simula o circuito e retorna a corretude do circuito.
 
 Para circuitos Comportamentais `vbe` que não dependam de outros circuitos, basta executar:
 
