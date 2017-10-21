@@ -71,7 +71,7 @@ Note que é aplicado uma máscara `0xF` nas entradas para garantir que apenas os
 
 #### Exemplo de Arquivo Genpat
 
-[`src/c/mux_4bits.h`](src/c/mux_4bits.h)
+[`src/c/mux_4bits.h`](src/c/mux_4bits.c)
 ```c
 #include "genpat.h"
 
@@ -253,8 +253,6 @@ BEGIN
 END VBE;
 ```
 
-
-
 Esse processo é rodado para cada VHDL do projeto, preparando-os para a próxima etapa:
 
 
@@ -264,17 +262,20 @@ A simulação do circuito é feita pelo programa *Assimut*, do pacote Alliance. 
 
 Para circuitos Comportamentais `vbe` que não dependam de outros circuitos, basta executar:
 
-    $ asimut -b circuito_vbe vetor_de_testes_pat resultado
+    $ asimut -b <circuito_vbe> <vetor_de_testes_pat> <resultado>
 
 E ele automaticamente dirá se o circuito está correto ou não.
 
-Para circuitos Estruturais `vst`, o funcionamento muda um pouco. Primeiro precisaremos definir um arquivo `catalog` com as dependências desse circuito listadas. No caso do somador de 4 bits, que é feito usando quatro somadores de um bit, foi feito o seguinte arquivo catalog:
+Para circuitos Estruturais `vst`, o funcionamento muda um pouco. Primeiro precisaremos definir um arquivo `catalog` com as dependências desse circuito listadas. No caso do [somador de 4 bits](src/vhdl/somador_4bits.vhdl), que é feito usando quatro somadores de um bit, foi feito o seguinte arquivo catalog:
 
 ```
 somador_1bit C
 ```
 
+Que é referenciado pela variável de ambiente `MBK_CATAL_NAME`, gerando o seguinte comando:
 
+    $ MBK_CATAL_NAME=catalog MBK_IN_LO=vst asimut somador_4bits somador_4bits result
 
+Note que por ser um código estrutural, precisamos também da variável de ambiente `MBK_IN_LO` com o valor `vst` para indicar ao *Assimut* que estamos trabalhando com VHDL Estrutural.
 
-&& MBK_CATAL_NAME=catalog MBK_IN_LO=vst asimut somador_4bits{,} result \
+Assim, então, verificamos a corretude de um circuito.
