@@ -41,10 +41,11 @@ void GerarGenpatParaCodigo(char* label, int code) {
 	int labelUsado = 0;
 	
 	uint8_t acc = 0;
+	uint8_t anterior = 0;
 	for (int a = 0; a < 16; a++)
 	for (int clk = 0; clk <= 1; clk++) {
 		/* Calcula o resultado do somador de 4 bits com acumulador */
-		Resultado4Bits res = Somador4BitsAcc(code, &acc, a, clk, !clk);
+		Resultado4Bits res = Somador4BitsAcc(code, &anterior, &acc, a, clk, !clk);
 
 		AFFECT(IntToStr(current), "Clk",  IntToStr(clk));
 		AFFECT(IntToStr(current), "Sel0", IntToStr((code >> 0) & 0x1));
@@ -58,6 +59,7 @@ void GerarGenpatParaCodigo(char* label, int code) {
 			labelUsado++;
 		}
 
+		anterior = res.saida;
 		++current;
 	}
 }
